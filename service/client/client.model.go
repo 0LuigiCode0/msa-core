@@ -2,8 +2,8 @@ package client
 
 import (
 	"context"
-	"x-msa-core/grpc/msa_service"
-	"x-msa-core/helper"
+	"msa-core/grpc/msa_service"
+	"msa-core/helper"
 
 	"google.golang.org/grpc"
 )

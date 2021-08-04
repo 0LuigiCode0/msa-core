@@ -1,8 +1,8 @@
 package dependents
 
 import (
+	"msa-core/monitor/client"
 	"sync"
-	"x-msa-core/monitor/client"
 )
 
 type MonitorDependentsManager interface {

@@ -2,9 +2,9 @@ package server
 
 import (
 	"context"
-	"x-msa-core/grpc/msa_service"
-	dep_observer "x-msa-core/observer/dependents"
-	dep_service "x-msa-core/service/dependents"
+	"msa-core/grpc/msa_service"
+	dep_observer "msa-core/observer/dependents"
+	dep_service "msa-core/service/dependents"
 
 	"google.golang.org/grpc"
 )

@@ -2,7 +2,7 @@ package dependents
 
 import (
 	"fmt"
-	"x-msa-core/observer/client"
+	"msa-core/observer/client"
 )
 
 func NewODM() ObserverDependentsManager {

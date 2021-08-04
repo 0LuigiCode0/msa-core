@@ -2,8 +2,8 @@ package client
 
 import (
 	"fmt"
-	"x-msa-core/grpc/msa_service"
-	"x-msa-core/helper"
+	"msa-core/grpc/msa_service"
+	"msa-core/helper"
 )
 
 func NewServiceClient(addr string, group helper.GroupsType) (ServiceClient, error) {

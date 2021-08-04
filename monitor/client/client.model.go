@@ -2,7 +2,7 @@ package client
 
 import (
 	"context"
-	"x-msa-core/grpc/msa_monitor"
+	"msa-core/grpc/msa_monitor"
 
 	"google.golang.org/grpc"
 )

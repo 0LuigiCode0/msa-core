@@ -2,8 +2,8 @@ package dependents
 
 import (
 	"fmt"
-	"x-msa-core/helper"
-	"x-msa-core/service/client"
+	"msa-core/helper"
+	"msa-core/service/client"
 )
 
 func NewSDM() ServiceDependentsManager {

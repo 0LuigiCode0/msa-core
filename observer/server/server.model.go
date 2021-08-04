@@ -2,8 +2,8 @@ package server
 
 import (
 	"context"
-	"x-msa-core/grpc/msa_observer"
-	"x-msa-core/monitor/dependents"
+	"msa-core/grpc/msa_observer"
+	"msa-core/monitor/dependents"
 
 	"google.golang.org/grpc"
 )

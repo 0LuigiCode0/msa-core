@@ -1,4 +1,4 @@
-module x-msa-core
+module msa-core
 
 go 1.16
 
