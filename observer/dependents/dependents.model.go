@@ -1,8 +1,9 @@
 package dependents
 
 import (
-	"msa-core/observer/client"
 	"sync"
+
+	"github.com/0LuigiCode0/msa-core/observer/client"
 )
 
 type ObserverDependentsManager interface {

@@ -2,8 +2,9 @@ package client
 
 import (
 	"fmt"
-	"msa-core/grpc/msa_observer"
-	"msa-core/helper"
+
+	"github.com/0LuigiCode0/msa-core/grpc/msa_observer"
+	"github.com/0LuigiCode0/msa-core/helper"
 )
 
 func NewObserverClient(addr string) (ObserverClient, error) {

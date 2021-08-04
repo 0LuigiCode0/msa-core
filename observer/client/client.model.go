@@ -2,7 +2,8 @@ package client
 
 import (
 	"context"
-	"msa-core/grpc/msa_observer"
+
+	"github.com/0LuigiCode0/msa-core/grpc/msa_observer"
 
 	"google.golang.org/grpc"
 )

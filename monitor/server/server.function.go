@@ -3,10 +3,11 @@ package server
 import (
 	"context"
 	"fmt"
-	"msa-core/grpc/msa_monitor"
-	dep_observer "msa-core/observer/dependents"
-	dep_service "msa-core/service/dependents"
 	"net"
+
+	"github.com/0LuigiCode0/msa-core/grpc/msa_monitor"
+	dep_observer "github.com/0LuigiCode0/msa-core/observer/dependents"
+	dep_service "github.com/0LuigiCode0/msa-core/service/dependents"
 
 	"google.golang.org/grpc"
 )

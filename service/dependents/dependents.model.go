@@ -1,9 +1,10 @@
 package dependents
 
 import (
-	"msa-core/helper"
-	"msa-core/service/client"
 	"sync"
+
+	"github.com/0LuigiCode0/msa-core/helper"
+	"github.com/0LuigiCode0/msa-core/service/client"
 )
 
 type ServiceDependentsManager interface {

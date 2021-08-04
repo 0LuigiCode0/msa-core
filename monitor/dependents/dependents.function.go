@@ -2,7 +2,8 @@ package dependents
 
 import (
 	"fmt"
-	"msa-core/monitor/client"
+
+	"github.com/0LuigiCode0/msa-core/monitor/client"
 )
 
 func NewMDM() MonitorDependentsManager {

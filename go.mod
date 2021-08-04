@@ -1,4 +1,4 @@
-module msa-core
+module github.com/0LuigiCode0/msa-core
 
 go 1.16
 

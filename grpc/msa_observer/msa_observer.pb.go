@@ -7,9 +7,9 @@
 package msa_observer
 
 import (
+	msa_utils "github.com/0LuigiCode0/msa-core/grpc/msa_utils"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	msa_utils "msa-core/grpc/msa_utils"
 	reflect "reflect"
 	sync "sync"
 )
