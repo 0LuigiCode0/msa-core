@@ -2,6 +2,8 @@ package helper
 
 import (
 	"context"
+	"crypto/sha256"
+	"encoding/hex"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
@@ -94,4 +96,15 @@ func Dispatch(f interface{}, args ...interface{}) error {
 		}()
 	}
 	return nil
+}
+
+func Hash(data, salt string) string {
+	hash1 := sha256.New()
+	hash2 := sha256.New()
+
+	hash1.Write([]byte(data))
+	hash2.Write(hash1.Sum([]byte(salt)))
+	hash1.Write(hash2.Sum([]byte(salt)))
+
+	return hex.EncodeToString(hash1.Sum(nil))
 }
