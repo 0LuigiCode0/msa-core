@@ -21,14 +21,12 @@ func init() {
 	C = make(chan os.Signal, 3)
 }
 
-func CreateConn(addr string) (conn *grpc.ClientConn, ctx context.Context, close context.CancelFunc, err error) {
+func CreateConn(addr string) (conn *grpc.ClientConn, ctx context.Context, closeCtx context.CancelFunc, err error) {
 	timer := time.NewTimer(time.Minute * 5)
 	defer timer.Stop()
 
-	ctx, close = context.WithCancel(Ctx)
-
-	c := make(chan bool)
-	defer func() { c <- true }()
+	ctx, closeCtx = context.WithCancel(Ctx)
+	c := make(chan struct{}, 1)
 
 	Wg.Add(1)
 	go func() {
@@ -36,12 +34,13 @@ func CreateConn(addr string) (conn *grpc.ClientConn, ctx context.Context, close 
 		for {
 			select {
 			case <-Ctx.Done():
-				close()
+				closeCtx()
 				return
 			case <-timer.C:
-				close()
+				closeCtx()
 				return
 			case <-c:
+				close(c)
 				return
 			}
 		}
@@ -51,7 +50,7 @@ func CreateConn(addr string) (conn *grpc.ClientConn, ctx context.Context, close 
 		grpc.WithInsecure(),
 		grpc.WithBlock(),
 	)
-
+	c <- struct{}{}
 	return
 }
 
