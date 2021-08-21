@@ -8,7 +8,7 @@ import (
 
 var Ctx context.Context
 var CloseCtx context.CancelFunc
-var Wg sync.WaitGroup
+var Wg *sync.WaitGroup
 var C chan os.Signal
 
 type GroupsType string

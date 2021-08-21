@@ -9,12 +9,14 @@ import (
 	"io/ioutil"
 	"os"
 	"reflect"
+	"sync"
 	"time"
 
 	"google.golang.org/grpc"
 )
 
 func init() {
+	Wg = &sync.WaitGroup{}
 	Ctx, CloseCtx = context.WithCancel(context.Background())
 	C = make(chan os.Signal, 3)
 }

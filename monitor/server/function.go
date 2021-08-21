@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net"
 
-	"github.com/0LuigiCode0/msa-core/grpc/msa_monitor"
+	"github.com/0LuigiCode0/msa-core/grpc/msaMonitor"
 	dep_observer "github.com/0LuigiCode0/msa-core/observer/dependents"
 	dep_service "github.com/0LuigiCode0/msa-core/service/dependents"
 
@@ -20,7 +20,7 @@ func NewMonitorServer(key, addr string) MonitorServer {
 		observers: dep_observer.NewODM(),
 		services:  dep_service.NewSDM(),
 	}
-	msa_monitor.RegisterMonitorServer(server.server, server)
+	msaMonitor.RegisterMonitorServer(server.server, server)
 
 	return server
 }
@@ -46,30 +46,30 @@ func (s *monitorServer) Services() dep_service.ServiceDependentsManager    { ret
 func (s *monitorServer) GetAddr() string                                   { return s.addr }
 func (s *monitorServer) GetKey() string                                    { return s.key }
 
-func (s *monitorServer) AddService(ctx context.Context, req *msa_monitor.RequestAddService) (*msa_monitor.Response, error) {
+func (s *monitorServer) AddService(ctx context.Context, req *msaMonitor.RequestAddService) (*msaMonitor.Response, error) {
 	fmt.Println(req)
-	return &msa_monitor.Response{
+	return &msaMonitor.Response{
 		Success: true,
 	}, nil
 }
 
-func (s *monitorServer) DeleteService(ctx context.Context, req *msa_monitor.RequestDelService) (*msa_monitor.Response, error) {
+func (s *monitorServer) DeleteService(ctx context.Context, req *msaMonitor.RequestDelService) (*msaMonitor.Response, error) {
 	fmt.Println(req)
-	return &msa_monitor.Response{
+	return &msaMonitor.Response{
 		Success: true,
 	}, nil
 }
 
-func (s *monitorServer) RebuildService(ctx context.Context, req *msa_monitor.RequestRebuildService) (*msa_monitor.Response, error) {
+func (s *monitorServer) RebuildService(ctx context.Context, req *msaMonitor.RequestRebuildService) (*msaMonitor.Response, error) {
 	fmt.Println(req)
-	return &msa_monitor.Response{
+	return &msaMonitor.Response{
 		Success: true,
 	}, nil
 }
 
-func (s *monitorServer) SetService(ctx context.Context, req *msa_monitor.RequestSetService) (*msa_monitor.Response, error) {
+func (s *monitorServer) SetService(ctx context.Context, req *msaMonitor.RequestSetService) (*msaMonitor.Response, error) {
 	fmt.Println(req)
-	return &msa_monitor.Response{
+	return &msaMonitor.Response{
 		Success: true,
 	}, nil
 }

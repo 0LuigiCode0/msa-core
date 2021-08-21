@@ -2,12 +2,12 @@
 // versions:
 // 	protoc-gen-go v1.27.1
 // 	protoc        v3.17.3
-// source: proto/msa_monitor.proto
+// source: proto/msaMonitor.proto
 
-package msa_monitor
+package msaMonitor
 
 import (
-	msa_utils "github.com/0LuigiCode0/msa-core/grpc/msa_utils"
+	msaUtils "github.com/0LuigiCode0/msa-core/grpc/msaUtils"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -199,9 +199,9 @@ type RequestSetService struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	GroupType string             `protobuf:"bytes,1,opt,name=GroupType,proto3" json:"GroupType,omitempty"`
-	Key       string             `protobuf:"bytes,2,opt,name=Key,proto3" json:"Key,omitempty"`
-	Command   msa_utils.Commands `protobuf:"varint,3,opt,name=Command,proto3,enum=msa_utils.Commands" json:"Command,omitempty"`
+	GroupType string            `protobuf:"bytes,1,opt,name=GroupType,proto3" json:"GroupType,omitempty"`
+	Key       string            `protobuf:"bytes,2,opt,name=Key,proto3" json:"Key,omitempty"`
+	Command   msaUtils.Commands `protobuf:"varint,3,opt,name=Command,proto3,enum=msaUtils.Commands" json:"Command,omitempty"`
 }
 
 func (x *RequestSetService) Reset() {
@@ -250,11 +250,11 @@ func (x *RequestSetService) GetKey() string {
 	return ""
 }
 
-func (x *RequestSetService) GetCommand() msa_utils.Commands {
+func (x *RequestSetService) GetCommand() msaUtils.Commands {
 	if x != nil {
 		return x.Command
 	}
-	return msa_utils.Commands(0)
+	return msaUtils.Commands(0)
 }
 
 type Response struct {
@@ -372,23 +372,23 @@ func file_proto_msa_monitor_proto_rawDescGZIP() []byte {
 
 var file_proto_msa_monitor_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_proto_msa_monitor_proto_goTypes = []interface{}{
-	(*RequestAddService)(nil),     // 0: msa_monitor.RequestAddService
-	(*RequestDelService)(nil),     // 1: msa_monitor.RequestDelService
-	(*RequestRebuildService)(nil), // 2: msa_monitor.RequestRebuildService
-	(*RequestSetService)(nil),     // 3: msa_monitor.RequestSetService
-	(*Response)(nil),              // 4: msa_monitor.Response
-	(msa_utils.Commands)(0),       // 5: msa_utils.Commands
+	(*RequestAddService)(nil),     // 0: msaMonitor.RequestAddService
+	(*RequestDelService)(nil),     // 1: msaMonitor.RequestDelService
+	(*RequestRebuildService)(nil), // 2: msaMonitor.RequestRebuildService
+	(*RequestSetService)(nil),     // 3: msaMonitor.RequestSetService
+	(*Response)(nil),              // 4: msaMonitor.Response
+	(msaUtils.Commands)(0),        // 5: msaUtils.Commands
 }
 var file_proto_msa_monitor_proto_depIdxs = []int32{
-	5, // 0: msa_monitor.RequestSetService.Command:type_name -> msa_utils.Commands
-	0, // 1: msa_monitor.Monitor.AddService:input_type -> msa_monitor.RequestAddService
-	1, // 2: msa_monitor.Monitor.DeleteService:input_type -> msa_monitor.RequestDelService
-	2, // 3: msa_monitor.Monitor.RebuildService:input_type -> msa_monitor.RequestRebuildService
-	3, // 4: msa_monitor.Monitor.SetService:input_type -> msa_monitor.RequestSetService
-	4, // 5: msa_monitor.Monitor.AddService:output_type -> msa_monitor.Response
-	4, // 6: msa_monitor.Monitor.DeleteService:output_type -> msa_monitor.Response
-	4, // 7: msa_monitor.Monitor.RebuildService:output_type -> msa_monitor.Response
-	4, // 8: msa_monitor.Monitor.SetService:output_type -> msa_monitor.Response
+	5, // 0: msaMonitor.RequestSetService.Command:type_name -> msaUtils.Commands
+	0, // 1: msaMonitor.Monitor.AddService:input_type -> msaMonitor.RequestAddService
+	1, // 2: msaMonitor.Monitor.DeleteService:input_type -> msaMonitor.RequestDelService
+	2, // 3: msaMonitor.Monitor.RebuildService:input_type -> msaMonitor.RequestRebuildService
+	3, // 4: msaMonitor.Monitor.SetService:input_type -> msaMonitor.RequestSetService
+	4, // 5: msaMonitor.Monitor.AddService:output_type -> msaMonitor.Response
+	4, // 6: msaMonitor.Monitor.DeleteService:output_type -> msaMonitor.Response
+	4, // 7: msaMonitor.Monitor.RebuildService:output_type -> msaMonitor.Response
+	4, // 8: msaMonitor.Monitor.SetService:output_type -> msaMonitor.Response
 	5, // [5:9] is the sub-list for method output_type
 	1, // [1:5] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name

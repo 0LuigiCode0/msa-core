@@ -1,8 +1,8 @@
 syntax = "proto3";
-package msa_monitor;
-option go_package = "grpc/msa_monitor";
+package msaMonitor;
+option go_package = "grpc/msaMonitor";
 
-import "proto/msa_utils.proto";
+import "proto/msaUtils.proto";
 
 message RequestAddService {
    string Repo = 1;
@@ -23,7 +23,7 @@ message RequestRebuildService {
 message RequestSetService {
    string GroupType = 1;
    string Key = 2;
-   msa_utils.Commands Command = 3;
+   msaUtils.Commands Command = 3;
 }
 
 message Response {

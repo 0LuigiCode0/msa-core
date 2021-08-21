@@ -1,7 +1,7 @@
 package server
 
 import (
-	"github.com/0LuigiCode0/msa-core/grpc/msa_monitor"
+	"github.com/0LuigiCode0/msa-core/grpc/msaMonitor"
 	dep_observer "github.com/0LuigiCode0/msa-core/observer/dependents"
 	dep_service "github.com/0LuigiCode0/msa-core/service/dependents"
 
@@ -19,7 +19,7 @@ type MonitorServer interface {
 }
 
 type monitorServer struct {
-	msa_monitor.MonitorServer
+	msaMonitor.MonitorServer
 
 	server *grpc.Server
 	key    string

@@ -3,7 +3,7 @@ package server
 import (
 	"context"
 
-	"github.com/0LuigiCode0/msa-core/grpc/msa_service"
+	"github.com/0LuigiCode0/msa-core/grpc/msaService"
 	dep_observer "github.com/0LuigiCode0/msa-core/observer/dependents"
 	dep_service "github.com/0LuigiCode0/msa-core/service/dependents"
 
@@ -19,17 +19,17 @@ type ServiceServer interface {
 	GetAddr() string
 	GetKey() string
 
-	SetCall(f func(ctx context.Context, req *msa_service.RequestCall) (*msa_service.ResponseCall, error))
+	SetCall(f func(ctx context.Context, req *msaService.RequestCall) (*msaService.ResponseCall, error))
 }
 
 type serviceServer struct {
-	msa_service.ServiceServer
+	msaService.ServiceServer
 
 	server *grpc.Server
 	key    string
 	addr   string
 
-	call func(ctx context.Context, req *msa_service.RequestCall) (*msa_service.ResponseCall, error)
+	call func(ctx context.Context, req *msaService.RequestCall) (*msaService.ResponseCall, error)
 
 	observers dep_observer.ObserverDependentsManager
 	services  dep_service.ServiceDependentsManager

@@ -2,12 +2,12 @@
 // versions:
 // 	protoc-gen-go v1.27.1
 // 	protoc        v3.17.3
-// source: proto/msa_observer.proto
+// source: proto/msaObserver.proto
 
-package msa_observer
+package msaObserver
 
 import (
-	msa_utils "github.com/0LuigiCode0/msa-core/grpc/msa_utils"
+	msaUtils "github.com/0LuigiCode0/msa-core/grpc/msaUtils"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -184,9 +184,9 @@ type RequestPushStatus struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Key    string                  `protobuf:"bytes,1,opt,name=Key,proto3" json:"Key,omitempty"`
-	IsNew  bool                    `protobuf:"varint,2,opt,name=IsNew,proto3" json:"IsNew,omitempty"`
-	Status msa_utils.StatusService `protobuf:"varint,3,opt,name=Status,proto3,enum=msa_utils.StatusService" json:"Status,omitempty"`
+	Key    string                 `protobuf:"bytes,1,opt,name=Key,proto3" json:"Key,omitempty"`
+	IsNew  bool                   `protobuf:"varint,2,opt,name=IsNew,proto3" json:"IsNew,omitempty"`
+	Status msaUtils.StatusService `protobuf:"varint,3,opt,name=Status,proto3,enum=msaUtils.StatusService" json:"Status,omitempty"`
 }
 
 func (x *RequestPushStatus) Reset() {
@@ -235,11 +235,11 @@ func (x *RequestPushStatus) GetIsNew() bool {
 	return false
 }
 
-func (x *RequestPushStatus) GetStatus() msa_utils.StatusService {
+func (x *RequestPushStatus) GetStatus() msaUtils.StatusService {
 	if x != nil {
 		return x.Status
 	}
-	return msa_utils.StatusService(0)
+	return msaUtils.StatusService(0)
 }
 
 type RequestWho struct {
@@ -640,30 +640,30 @@ func file_proto_msa_observer_proto_rawDescGZIP() []byte {
 
 var file_proto_msa_observer_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_proto_msa_observer_proto_goTypes = []interface{}{
-	(*RequestPushFirst)(nil),      // 0: msa_observer.RequestPushFirst
-	(*RequestPushStats)(nil),      // 1: msa_observer.RequestPushStats
-	(*RequestPushStatus)(nil),     // 2: msa_observer.RequestPushStatus
-	(*RequestWho)(nil),            // 3: msa_observer.RequestWho
-	(*RequestRestartService)(nil), // 4: msa_observer.RequestRestartService
-	(*ResponsePushFirst)(nil),     // 5: msa_observer.ResponsePushFirst
-	(*ResponseWho)(nil),           // 6: msa_observer.ResponseWho
-	(*Response)(nil),              // 7: msa_observer.Response
-	(*Info)(nil),                  // 8: msa_observer.Info
-	(msa_utils.StatusService)(0),  // 9: msa_utils.StatusService
+	(*RequestPushFirst)(nil),      // 0: msaObserver.RequestPushFirst
+	(*RequestPushStats)(nil),      // 1: msaObserver.RequestPushStats
+	(*RequestPushStatus)(nil),     // 2: msaObserver.RequestPushStatus
+	(*RequestWho)(nil),            // 3: msaObserver.RequestWho
+	(*RequestRestartService)(nil), // 4: msaObserver.RequestRestartService
+	(*ResponsePushFirst)(nil),     // 5: msaObserver.ResponsePushFirst
+	(*ResponseWho)(nil),           // 6: msaObserver.ResponseWho
+	(*Response)(nil),              // 7: msaObserver.Response
+	(*Info)(nil),                  // 8: msaObserver.Info
+	(msaUtils.StatusService)(0),   // 9: msaUtils.StatusService
 }
 var file_proto_msa_observer_proto_depIdxs = []int32{
-	9, // 0: msa_observer.RequestPushStatus.Status:type_name -> msa_utils.StatusService
-	8, // 1: msa_observer.ResponsePushFirst.Dependents:type_name -> msa_observer.Info
-	0, // 2: msa_observer.Observer.PushFirst:input_type -> msa_observer.RequestPushFirst
-	1, // 3: msa_observer.Observer.PushStats:input_type -> msa_observer.RequestPushStats
-	2, // 4: msa_observer.Observer.PushStatus:input_type -> msa_observer.RequestPushStatus
-	3, // 5: msa_observer.Observer.Who:input_type -> msa_observer.RequestWho
-	4, // 6: msa_observer.Observer.RestartService:input_type -> msa_observer.RequestRestartService
-	5, // 7: msa_observer.Observer.PushFirst:output_type -> msa_observer.ResponsePushFirst
-	7, // 8: msa_observer.Observer.PushStats:output_type -> msa_observer.Response
-	7, // 9: msa_observer.Observer.PushStatus:output_type -> msa_observer.Response
-	6, // 10: msa_observer.Observer.Who:output_type -> msa_observer.ResponseWho
-	7, // 11: msa_observer.Observer.RestartService:output_type -> msa_observer.Response
+	9, // 0: msaObserver.RequestPushStatus.Status:type_name -> msaUtils.StatusService
+	8, // 1: msaObserver.ResponsePushFirst.Dependents:type_name -> msaObserver.Info
+	0, // 2: msaObserver.Observer.PushFirst:input_type -> msaObserver.RequestPushFirst
+	1, // 3: msaObserver.Observer.PushStats:input_type -> msaObserver.RequestPushStats
+	2, // 4: msaObserver.Observer.PushStatus:input_type -> msaObserver.RequestPushStatus
+	3, // 5: msaObserver.Observer.Who:input_type -> msaObserver.RequestWho
+	4, // 6: msaObserver.Observer.RestartService:input_type -> msaObserver.RequestRestartService
+	5, // 7: msaObserver.Observer.PushFirst:output_type -> msaObserver.ResponsePushFirst
+	7, // 8: msaObserver.Observer.PushStats:output_type -> msaObserver.Response
+	7, // 9: msaObserver.Observer.PushStatus:output_type -> msaObserver.Response
+	6, // 10: msaObserver.Observer.Who:output_type -> msaObserver.ResponseWho
+	7, // 11: msaObserver.Observer.RestartService:output_type -> msaObserver.Response
 	7, // [7:12] is the sub-list for method output_type
 	2, // [2:7] is the sub-list for method input_type
 	2, // [2:2] is the sub-list for extension type_name

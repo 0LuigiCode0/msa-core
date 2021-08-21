@@ -1,6 +1,6 @@
 syntax = "proto3";
-package msa_utils;
-option go_package = "grpc/msa_utils";
+package msaUtils;
+option go_package = "grpc/msaUtils";
 
 enum RoleService {
    Observer = 0;

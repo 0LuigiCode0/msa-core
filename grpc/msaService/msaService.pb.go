@@ -2,9 +2,9 @@
 // versions:
 // 	protoc-gen-go v1.27.1
 // 	protoc        v3.17.3
-// source: proto/msa_service.proto
+// source: proto/msaService.proto
 
-package msa_service
+package msaService
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -367,21 +367,21 @@ func file_proto_msa_service_proto_rawDescGZIP() []byte {
 
 var file_proto_msa_service_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_proto_msa_service_proto_goTypes = []interface{}{
-	(*RequestCall)(nil),       // 0: msa_service.RequestCall
-	(*RequestAddService)(nil), // 1: msa_service.RequestAddService
-	(*RequestDelService)(nil), // 2: msa_service.RequestDelService
-	(*ResponseCall)(nil),      // 3: msa_service.ResponseCall
-	(*Response)(nil),          // 4: msa_service.Response
-	nil,                       // 5: msa_service.RequestCall.ArgsEntry
+	(*RequestCall)(nil),       // 0: msaService.RequestCall
+	(*RequestAddService)(nil), // 1: msaService.RequestAddService
+	(*RequestDelService)(nil), // 2: msaService.RequestDelService
+	(*ResponseCall)(nil),      // 3: msaService.ResponseCall
+	(*Response)(nil),          // 4: msaService.Response
+	nil,                       // 5: msaService.RequestCall.ArgsEntry
 }
 var file_proto_msa_service_proto_depIdxs = []int32{
-	5, // 0: msa_service.RequestCall.Args:type_name -> msa_service.RequestCall.ArgsEntry
-	0, // 1: msa_service.Service.Call:input_type -> msa_service.RequestCall
-	1, // 2: msa_service.Service.AddService:input_type -> msa_service.RequestAddService
-	2, // 3: msa_service.Service.DeleteService:input_type -> msa_service.RequestDelService
-	3, // 4: msa_service.Service.Call:output_type -> msa_service.ResponseCall
-	4, // 5: msa_service.Service.AddService:output_type -> msa_service.Response
-	4, // 6: msa_service.Service.DeleteService:output_type -> msa_service.Response
+	5, // 0: msaService.RequestCall.Args:type_name -> msaService.RequestCall.ArgsEntry
+	0, // 1: msaService.Service.Call:input_type -> msaService.RequestCall
+	1, // 2: msaService.Service.AddService:input_type -> msaService.RequestAddService
+	2, // 3: msaService.Service.DeleteService:input_type -> msaService.RequestDelService
+	3, // 4: msaService.Service.Call:output_type -> msaService.ResponseCall
+	4, // 5: msaService.Service.AddService:output_type -> msaService.Response
+	4, // 6: msaService.Service.DeleteService:output_type -> msaService.Response
 	4, // [4:7] is the sub-list for method output_type
 	1, // [1:4] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name

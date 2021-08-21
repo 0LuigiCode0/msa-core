@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net"
 
-	"github.com/0LuigiCode0/msa-core/grpc/msa_service"
+	"github.com/0LuigiCode0/msa-core/grpc/msaService"
 	"github.com/0LuigiCode0/msa-core/helper"
 	dep_observer "github.com/0LuigiCode0/msa-core/observer/dependents"
 	dep_service "github.com/0LuigiCode0/msa-core/service/dependents"
@@ -21,7 +21,7 @@ func NewServiceServer(key, addr string) ServiceServer {
 		observers: dep_observer.NewODM(),
 		services:  dep_service.NewSDM(),
 	}
-	msa_service.RegisterServiceServer(server.server, server)
+	msaService.RegisterServiceServer(server.server, server)
 
 	return server
 }
@@ -47,28 +47,28 @@ func (s *serviceServer) Observers() dep_observer.ObserverDependentsManager { ret
 func (s *serviceServer) GetAddr() string                                   { return s.addr }
 func (s *serviceServer) GetKey() string                                    { return s.key }
 
-func (s *serviceServer) SetCall(f func(ctx context.Context, req *msa_service.RequestCall) (*msa_service.ResponseCall, error)) {
+func (s *serviceServer) SetCall(f func(ctx context.Context, req *msaService.RequestCall) (*msaService.ResponseCall, error)) {
 	s.call = f
 }
 
-func (s *serviceServer) Call(ctx context.Context, req *msa_service.RequestCall) (*msa_service.ResponseCall, error) {
+func (s *serviceServer) Call(ctx context.Context, req *msaService.RequestCall) (*msaService.ResponseCall, error) {
 	return s.call(ctx, req)
 }
 
-func (s *serviceServer) AddService(ctx context.Context, req *msa_service.RequestAddService) (*msa_service.Response, error) {
+func (s *serviceServer) AddService(ctx context.Context, req *msaService.RequestAddService) (*msaService.Response, error) {
 	if err := s.services.Add(req.Key, fmt.Sprintf("%v:%v", req.Host, req.Port), helper.GroupsType(req.GroupType)); err != nil {
 		return nil, fmt.Errorf("cannot add service key %v in group %v addr %v: %v", req.Key, req.GroupType, fmt.Sprintf("%v:%v", req.Host, req.Port), err)
 	}
-	return &msa_service.Response{
+	return &msaService.Response{
 		Success: true,
 	}, nil
 }
 
-func (s *serviceServer) DeleteService(ctx context.Context, req *msa_service.RequestDelService) (*msa_service.Response, error) {
+func (s *serviceServer) DeleteService(ctx context.Context, req *msaService.RequestDelService) (*msaService.Response, error) {
 	if err := s.services.Delete(helper.GroupsType(req.GroupType), req.Key); err != nil {
 		return nil, fmt.Errorf("cannot remove service key %v in group %v: %v", req.Key, req.GroupType, err)
 	}
-	return &msa_service.Response{
+	return &msaService.Response{
 		Success: true,
 	}, nil
 }

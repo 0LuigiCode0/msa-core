@@ -1,8 +1,8 @@
 syntax = "proto3";
-package msa_observer;
-option go_package = "grpc/msa_observer";
+package msaObserver;
+option go_package = "grpc/msaObserver";
 
-import "proto/msa_utils.proto";
+import "proto/msaUtils.proto";
 
 message RequestPushFirst {
    string Host = 1;
@@ -23,7 +23,7 @@ message RequestPushStats {
 message RequestPushStatus {
    string Key = 1;
    bool IsNew = 2;
-   msa_utils.StatusService Status = 3;
+   msaUtils.StatusService Status = 3;
 }
 
 message RequestWho {

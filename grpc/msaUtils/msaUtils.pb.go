@@ -2,9 +2,9 @@
 // versions:
 // 	protoc-gen-go v1.27.1
 // 	protoc        v3.17.3
-// source: proto/msa_utils.proto
+// source: proto/msaUtils.proto
 
-package msa_utils
+package msaUtils
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -226,9 +226,9 @@ func file_proto_msa_utils_proto_rawDescGZIP() []byte {
 
 var file_proto_msa_utils_proto_enumTypes = make([]protoimpl.EnumInfo, 3)
 var file_proto_msa_utils_proto_goTypes = []interface{}{
-	(RoleService)(0),   // 0: msa_utils.RoleService
-	(StatusService)(0), // 1: msa_utils.StatusService
-	(Commands)(0),      // 2: msa_utils.Commands
+	(RoleService)(0),   // 0: msaUtils.RoleService
+	(StatusService)(0), // 1: msaUtils.StatusService
+	(Commands)(0),      // 2: msaUtils.Commands
 }
 var file_proto_msa_utils_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type

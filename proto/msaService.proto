@@ -1,6 +1,6 @@
 syntax = "proto3";
-package msa_service;
-option go_package = "grpc/msa_service";
+package msaService;
+option go_package = "grpc/msaService";
 
 message RequestCall {
    bytes Data = 1;
