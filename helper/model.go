@@ -6,10 +6,12 @@ import (
 	"sync"
 )
 
-var Ctx context.Context
-var CloseCtx context.CancelFunc
-var Wg *sync.WaitGroup
-var C chan os.Signal
+var (
+	Ctx      context.Context
+	CloseCtx context.CancelFunc
+	Wg       *sync.WaitGroup
+	C        chan os.Signal
+)
 
 type GroupsType string
 
@@ -44,7 +46,7 @@ const (
 	Xtech       GroupsType = "xtech"
 )
 
-//Коды ошибок
+// Коды ошибок
 
 type ErrCode byte
 
@@ -65,6 +67,7 @@ const (
 	ErrorGenerate
 	ErrorSend
 )
+
 const (
 	KeyErrorNotFound      = "not found"
 	KeyErrorExist         = "already exists"
@@ -82,14 +85,23 @@ const (
 	KeyErrorSend          = "send is faied"
 )
 
-//ResponseError модель ошибки
+// ResponseError модель ошибки
 type ResponseError struct {
 	Code ErrCode `json:"code"`
 	Msg  string  `json:"msg"`
 }
 
-//ResponseModel модель ответа
+// ResponseModel модель ответа
 type ResponseModel struct {
 	Success bool        `json:"success"`
 	Result  interface{} `json:"result"`
 }
+
+const (
+	CA        = "./cert/ca.pem"
+	CAKey     = "./cert/ca.key"
+	Server    = "./cert/server.pem"
+	ServerKey = "./cert/server.key"
+	Client    = "./cert/client.pem"
+	ClientKey = "./cert/client.key"
+)

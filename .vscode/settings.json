@@ -1,0 +1,17 @@
+{
+   "go.formatTool": "gofumports",
+   "go.useLanguageServer": true,
+   "go.trace.server": "verbose",
+   "go.toolsManagement.autoUpdate": true,
+   "gopls": {
+      "analyses": {
+         "unusedwrite": true,
+         "unusedparams": true,
+         "nilness": true,
+         "shadow": true,
+      },
+      "formatting.gofumpt": true,
+      "experimentalWorkspaceModule": true,
+      "experimentalTemplateSupport": true,
+   },
+}

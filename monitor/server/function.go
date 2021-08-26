@@ -39,7 +39,7 @@ func (s *monitorServer) Start() error {
 
 	return nil
 }
-func (s *monitorServer) Close() { s.server.Stop() }
+func (s *monitorServer) Close() { s.server.GracefulStop() }
 
 func (s *monitorServer) Observers() dep_observer.ObserverDependentsManager { return s.observers }
 func (s *monitorServer) Services() dep_service.ServiceDependentsManager    { return s.services }

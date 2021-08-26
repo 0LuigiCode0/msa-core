@@ -25,12 +25,15 @@ func (c *monitorClient) Close() { c.close(); c.conn.Close() }
 func (c *monitorClient) AddService(req *msaMonitor.RequestAddService) (*msaMonitor.Response, error) {
 	return c.client.AddService(helper.Ctx, req)
 }
+
 func (c *monitorClient) DeleteService(req *msaMonitor.RequestDelService) (*msaMonitor.Response, error) {
 	return c.client.DeleteService(helper.Ctx, req)
 }
+
 func (c *monitorClient) RebuildService(req *msaMonitor.RequestRebuildService) (*msaMonitor.Response, error) {
 	return c.client.RebuildService(helper.Ctx, req)
 }
+
 func (c *monitorClient) SetService(req *msaMonitor.RequestSetService) (*msaMonitor.Response, error) {
 	return c.client.SetService(helper.Ctx, req)
 }

@@ -27,9 +27,11 @@ func (c *serviceClient) Close() { c.close(); c.conn.Close() }
 func (c *serviceClient) Call(req *msaService.RequestCall) (*msaService.ResponseCall, error) {
 	return c.client.Call(helper.Ctx, req)
 }
+
 func (c *serviceClient) AddService(req *msaService.RequestAddService) (*msaService.Response, error) {
 	return c.client.AddService(helper.Ctx, req)
 }
+
 func (c *serviceClient) DeleteService(req *msaService.RequestDelService) (*msaService.Response, error) {
 	return c.client.DeleteService(helper.Ctx, req)
 }

@@ -40,7 +40,7 @@ func (s *serviceServer) Start() error {
 
 	return nil
 }
-func (s *serviceServer) Close() { s.server.Stop() }
+func (s *serviceServer) Close() { s.server.GracefulStop() }
 
 func (s *serviceServer) Services() dep_service.ServiceDependentsManager    { return s.services }
 func (s *serviceServer) Observers() dep_observer.ObserverDependentsManager { return s.observers }

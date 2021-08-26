@@ -3,25 +3,36 @@ package helper
 import (
 	"context"
 	"crypto/sha256"
+	"crypto/tls"
+	"crypto/x509"
 	"encoding/hex"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"os"
+	"os/signal"
 	"reflect"
 	"sync"
 	"time"
 
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/backoff"
+	"google.golang.org/grpc/credentials"
 )
 
 func init() {
 	Wg = &sync.WaitGroup{}
 	Ctx, CloseCtx = context.WithCancel(context.Background())
 	C = make(chan os.Signal, 3)
+	signal.Notify(C, os.Interrupt)
 }
 
 func CreateConn(addr string) (conn *grpc.ClientConn, ctx context.Context, closeCtx context.CancelFunc, err error) {
+	// cred, err := CredentialsClient()
+	// if err != nil {
+	// 	return nil, nil, nil, err
+	// }
+
 	timer := time.NewTimer(time.Minute * 5)
 	defer timer.Stop()
 
@@ -47,7 +58,11 @@ func CreateConn(addr string) (conn *grpc.ClientConn, ctx context.Context, closeC
 	}()
 
 	conn, err = grpc.DialContext(ctx, addr,
+		// grpc.WithTransportCredentials(cred),
 		grpc.WithInsecure(),
+		grpc.WithConnectParams(grpc.ConnectParams{
+			Backoff: backoff.DefaultConfig,
+		}),
 		grpc.WithBlock(),
 	)
 	c <- struct{}{}
@@ -108,4 +123,54 @@ func Hash(data, salt string) string {
 	hash1.Write(hash2.Sum([]byte(salt)))
 
 	return hex.EncodeToString(hash1.Sum(nil))
+}
+
+func CredentialsServer() (credentials.TransportCredentials, error) {
+	ca, err := ioutil.ReadFile(CA)
+	if err != nil {
+		return nil, fmt.Errorf(KeyErrorRead + " ca")
+	}
+
+	pool := x509.NewCertPool()
+	if !pool.AppendCertsFromPEM(ca) {
+		return nil, fmt.Errorf("cannot append CA")
+	}
+
+	cert, err := tls.LoadX509KeyPair(Server, ServerKey)
+	if err != nil {
+		return nil, fmt.Errorf(KeyErrorRead + " server cert")
+	}
+
+	conf := &tls.Config{
+		Certificates: []tls.Certificate{cert},
+		ClientCAs:    pool,
+		ClientAuth:   tls.NoClientCert,
+	}
+
+	return credentials.NewTLS(conf), nil
+}
+
+func CredentialsClient() (credentials.TransportCredentials, error) {
+	ca, err := ioutil.ReadFile(CA)
+	if err != nil {
+		return nil, fmt.Errorf(KeyErrorRead + " ca")
+	}
+
+	pool := x509.NewCertPool()
+	if !pool.AppendCertsFromPEM(ca) {
+		return nil, fmt.Errorf("cannot append CA")
+	}
+
+	cert, err := tls.LoadX509KeyPair(Client, ClientKey)
+	if err != nil {
+		return nil, fmt.Errorf(KeyErrorRead + " server cert")
+	}
+
+	conf := &tls.Config{
+		Certificates: []tls.Certificate{cert},
+		ServerName:   "127.0.0.1",
+		RootCAs:      pool,
+	}
+
+	return credentials.NewTLS(conf), nil
 }

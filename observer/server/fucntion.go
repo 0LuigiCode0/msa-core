@@ -11,16 +11,23 @@ import (
 	"google.golang.org/grpc"
 )
 
-func NewObserverServer(key, addr string) ObserverServer {
+func NewObserverServer(key, addr string) (ObserverServer, error) {
+	// cred, err := helper.CredentialsServer()
+	// if err != nil {
+	// 	return nil, err
+	// }
+
 	server := &observerServer{
-		server:   grpc.NewServer(),
+		server: grpc.NewServer(
+		// grpc.Creds(cred),
+		),
 		key:      key,
 		addr:     addr,
 		monitors: dependents.NewMDM(),
 	}
 	msaObserver.RegisterObserverServer(server.server, server)
 
-	return server
+	return server, nil
 }
 
 func (s *observerServer) Start() error {
@@ -37,7 +44,7 @@ func (s *observerServer) Start() error {
 
 	return nil
 }
-func (s *observerServer) Close() { s.server.Stop() }
+func (s *observerServer) Close() { s.server.GracefulStop() }
 
 func (s *observerServer) Monitors() dependents.MonitorDependentsManager { return s.monitors }
 func (s *observerServer) GetAddr() string                               { return s.addr }
